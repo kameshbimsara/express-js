@@ -31,7 +31,6 @@ const loginUser = (req, res) => {
 
     const sql = "SELECT * FROM user_register WHERE email = ?";
     db.query(sql, [email], async (err, results) => {
-        console.log(results);
         if (err) return res.status(500).json({ message: "Database error" });
         if (results.length === 0) return res.status(404).json({ message: "User not found" });
 
