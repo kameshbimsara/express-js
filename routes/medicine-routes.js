@@ -5,12 +5,12 @@ const{saveMedicine , deleteMedicine , getAllMedicine , getMedicineById , updateM
 const authenticateToken = require('../middleware/auth');
 
 router.post('/register', registerUser);
-router.post('/login', loginUser);
+router.post('/login',loginUser);
 
-router.post('/', saveMedicine);
-router.delete('/:id', deleteMedicine);
-router.get('/', getAllMedicine);
-router.get('/:id', getMedicineById);
-router.put('/:id', updateMedicine);
+router.post('/',authenticateToken, saveMedicine);
+router.delete('/:id', authenticateToken, deleteMedicine);
+router.get('/', authenticateToken, getAllMedicine);
+router.get('/:id', authenticateToken, getMedicineById);
+router.put('/:id', authenticateToken, updateMedicine);
 
 module.exports = router;
