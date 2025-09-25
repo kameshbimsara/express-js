@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
+    console.log(req.body);
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -12,7 +13,7 @@ const registerUser = async (req, res) => {
     // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+    const sql = "INSERT INTO  user_register (name, email, password) VALUES (?, ?, ?)";
     db.query(sql, [name, email, hashedPassword], (err, result) => {
         if (err) {
             console.error(err);
